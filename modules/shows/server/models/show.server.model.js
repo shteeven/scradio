@@ -30,10 +30,10 @@ var ShowSchema = new Schema({
     en: String,
     kr: String
   },
-  user_id: [
+  host_id: [
     {
       type: Schema.ObjectId,
-      ref: 'User'
+      ref: 'Host'
     }
   ],
   date_time: {

@@ -25,25 +25,23 @@ var ProgramSchema = new Schema({
     default: 'modules/users/client/img/profile/default.png'
   },
   images: [ String ],
-  mixcloud: { type: String },
+  social: {
+    mixcloud: { type: String },
+    facebook: { type: String },
+    twitter: { type: String },
+    homepage: { type: String }
+  },
   categories: [ String ],
   description: {
     en: String,
     kr: String
   },
-  user_id: [
+  host_id: [
     {
       type: Schema.ObjectId,
-      ref: 'User'
+      ref: 'Host'
     }
-  ],
-  date_time: {
-    type: Date
-  },
-  show_id: {
-    type: Schema.ObjectId,
-    ref: 'Show'
-  }
+  ]
 });
 
 mongoose.model('Program', ProgramSchema);
