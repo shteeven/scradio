@@ -1,10 +1,10 @@
 {
-  "name": "meanjs",
+  "name": "scradio",
   "description": "Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js.",
   "version": "0.4.2",
   "meanjs-version": "0.4.2",
   "private": false,
-  "author": "https://github.com/meanjs/mean/graphs/contributors",
+  "author": "Steven Barnhurst",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
     "npm": ">=2.0.0"
   },
   "scripts": {
-    "start": "grunt",
+    "start": "node server.js",
     "test": "grunt test",
     "postinstall": "bower install --config.interactive=false"
   },

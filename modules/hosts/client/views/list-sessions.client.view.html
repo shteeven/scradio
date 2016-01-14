@@ -1,0 +1,21 @@
+<section ng-controller="HostsController" ng-init="find()">
+  <div class="page-header">
+    <h1>Hosts</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="host in hosts" ui-sref="hosts.view({hostId: host._id})" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="host.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="host.user" ng-bind="host.user.displayName"></span>
+        <span ng-if="!host.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="host.title"></h4>
+      <p class="list-group-item-text" ng-bind="host.content"></p>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="hosts.$resolved && !hosts.length">
+    No hosts yet, why don't you <a ui-sref="hosts.create">create one</a>?
+  </div>
+</section>
