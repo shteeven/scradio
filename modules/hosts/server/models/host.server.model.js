@@ -30,7 +30,7 @@ var HostSchema = new Schema({
     en: String,
     kr: String
   },
-  user_id: {
+  userID: {
     type: Schema.ObjectId,
     ref: 'User'
   },

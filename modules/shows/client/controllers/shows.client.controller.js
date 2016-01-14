@@ -18,16 +18,32 @@ angular.module('shows').controller('ShowsController', ['$scope', '$stateParams',
       // Create new Show object
       var show = new Shows({
         title: this.title,
-        content: this.content
+        profileImageURL: this.profileImageURL,
+        mixcloud: this.mixcloud,
+        categories: this.categories,
+        description: this.description,
+        hostID: this.hostID,
+        programID: this.programID,
+        dateTime: this.dateTime,
+        length: this.length
       });
 
       // Redirect after save
       show.$save(function (response) {
+
         $location.path('shows/' + response._id);
 
         // Clear form fields
         $scope.title = '';
-        $scope.content = '';
+        $scope.profileImageURL = '';
+        $scope.mixcloud = '';
+        $scope.categories = [];
+        $scope.description = {};
+        $scope.hostID = {};
+        $scope.programID = '';
+        $scope.dateTime = '';
+        $scope.length = '';
+
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -63,7 +79,20 @@ angular.module('shows').controller('ShowsController', ['$scope', '$stateParams',
       var show = $scope.show;
 
       show.$update(function () {
+
         $location.path('shows/' + show._id);
+
+        // Clear form fields
+        $scope.title = '';
+        $scope.profileImageURL = '';
+        $scope.mixcloud = '';
+        $scope.categories = [];
+        $scope.description = {};
+        $scope.hostID = {};
+        $scope.programID = '';
+        $scope.dateTime = '';
+        $scope.length = '';
+
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

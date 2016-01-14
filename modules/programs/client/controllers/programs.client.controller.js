@@ -18,16 +18,29 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$statePa
       // Create new Program object
       var program = new Programs({
         title: this.title,
-        content: this.content
+        content: this.content,
+        profileImageURL: this.profileImageURL,
+        images: this.images,
+        social: this.social,
+        categories: this.categories,
+        description: this.description,
+        hostID: this.host_id
       });
 
       // Redirect after save
       program.$save(function (response) {
+
         $location.path('programs/' + response._id);
 
         // Clear form fields
         $scope.title = '';
-        $scope.content = '';
+        $scope.profileImageURL = '';
+        $scope.images = [];
+        $scope.social = {};
+        $scope.categories = [];
+        $scope.description = '';
+        $scope.hostID = [];
+
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -63,7 +76,18 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$statePa
       var program = $scope.program;
 
       program.$update(function () {
+
         $location.path('programs/' + program._id);
+
+        // Clear form fields
+        $scope.title = '';
+        $scope.profileImageURL = '';
+        $scope.images = [];
+        $scope.social = {};
+        $scope.categories = [];
+        $scope.description = '';
+        $scope.hostID = [];
+
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

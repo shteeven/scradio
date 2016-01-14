@@ -18,16 +18,28 @@ angular.module('hosts').controller('HostsController', ['$scope', '$stateParams',
       // Create new Host object
       var host = new Hosts({
         title: this.title,
-        content: this.content
+        profileImageURL: this.profileImageURL,
+        images: this.images,
+        categories: this.categories,
+        description: this.description,
+        user_id: this.userID,
+        social: this.social
       });
 
       // Redirect after save
       host.$save(function (response) {
+
         $location.path('hosts/' + response._id);
 
         // Clear form fields
         $scope.title = '';
-        $scope.content = '';
+        $scope.profileImageURL = '';
+        $scope.images = [];
+        $scope.categories = [];
+        $scope.description = {};
+        $scope.userID = '';
+        $scope.social = {};
+
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
@@ -63,7 +75,18 @@ angular.module('hosts').controller('HostsController', ['$scope', '$stateParams',
       var host = $scope.host;
 
       host.$update(function () {
+
         $location.path('hosts/' + host._id);
+
+        // Clear form fields
+        $scope.title = '';
+        $scope.profileImageURL = '';
+        $scope.images = [];
+        $scope.categories = [];
+        $scope.description = {};
+        $scope.userID = '';
+        $scope.social = {};
+
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });

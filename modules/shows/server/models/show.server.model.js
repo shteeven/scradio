@@ -30,17 +30,17 @@ var ShowSchema = new Schema({
     en: String,
     kr: String
   },
-  host_id: [
+  hostID: [
     {
       type: Schema.ObjectId,
       ref: 'Host'
     }
   ],
-  date_time: {
+  dateTime: {
     type: Date
   },
   length: { type: Number },
-  program_id: {
+  programID: {
     type: Schema.ObjectId,
     ref: 'Program'
   }
