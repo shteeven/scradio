@@ -9,6 +9,17 @@ var path = require('path'),
   passport = require('passport'),
   User = mongoose.model('User');
 
+var Console = require('console').Console;
+var fs = require('fs');
+
+const output = fs.createWriteStream('./stdout.log');
+const errorOutput = fs.createWriteStream('./stderr.log');
+// custom simple logger
+const logger = new Console(output, errorOutput);
+// use it like console
+var count = 5;
+logger.log('count: %d', count);
+
 // URLs for which user can't be redirected on signin
 var noReturnUrls = [
   '/authentication/signin',
@@ -68,6 +79,7 @@ exports.signin = function (req, res, next) {
         if (err) {
           res.status(400).send(err);
         } else {
+          logger.log("here");
           res.json(user);
         }
       });
@@ -79,6 +91,7 @@ exports.signin = function (req, res, next) {
  * Signout
  */
 exports.signout = function (req, res) {
+  logger.log("here 2");
   req.logout();
   res.redirect('/');
 };
