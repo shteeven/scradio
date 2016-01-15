@@ -3,7 +3,7 @@
 // Init the application configuration module for AngularJS application
 var ApplicationConfiguration = (function () {
   // Init module configuration options
-  var applicationModuleName = 'mean';
+  var applicationModuleName = 'SCRadio';
   var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload'];
 
   // Add a new vertical module
@@ -101,6 +101,7 @@ angular.element(document).ready(function () {
 
   //Then init the app
   angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
+
 });
 
 'use strict';
@@ -340,7 +341,7 @@ angular.module('core').factory('authInterceptor', ['$q', '$injector', 'Authentic
             case 401:
               // Deauthenticate the global user
               Authentication.user = null;
-              $injector.get('$state').transitionTo('authentication.signin');
+              $injector.get('$state').transitionTo('signin');
               break;
             case 403:
               $injector.get('$state').transitionTo('forbidden');
@@ -1391,6 +1392,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
       $http.post('/api/auth/signin', $scope.credentials).success(function (response) {
         // If successful we assign the response to the global user model
         $scope.authentication.user = response;
+        console.log(response);
 
         // And redirect to the previous or home page
         $state.go($state.previous.state.name || 'home', $state.previous.params);
@@ -1744,10 +1746,17 @@ angular.module('users').directive('lowercase', function () {
 
 // Authentication service for user variables
 angular.module('users').factory('Authentication', ['$window',
+
   function ($window) {
     var auth = {
       user: $window.user
     };
+
+    function replaceAll(str, find, replace) {
+      return str.replace(new RegExp(find, 'g'), replace);
+    }
+
+    auth.user.profileImageURL = replaceAll(auth.user.profileImageURL, '&#x2F;', '/');
 
     return auth;
   }

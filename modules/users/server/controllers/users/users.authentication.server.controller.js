@@ -68,7 +68,6 @@ exports.signin = function (req, res, next) {
         if (err) {
           res.status(400).send(err);
         } else {
-          logger.log("here");
           res.json(user);
         }
       });
