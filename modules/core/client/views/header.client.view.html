@@ -38,7 +38,6 @@
           <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
           <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
         </a>
-        {{authentication.user.profileImageURL}}
         <ul class="dropdown-menu" role="menu">
           <li ui-sref-active="active">
             <a ui-sref="settings.profile">Edit Profile</a>

@@ -5,106 +5,106 @@
  */
 var path = require('path'),
   mongoose = require('mongoose'),
-  Show = mongoose.model('Show'),
+  Star = mongoose.model('Star'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 /**
- * Create a show
+ * Create a star
  */
 exports.create = function (req, res) {
-  var show = new Show(req.body);
-  show.user = req.user;
-  
-  show.save(function (err) {
+  var star = new Star(req.body);
+  star.user = req.user;
+
+  star.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(show);
+      res.json(star);
     }
   });
 };
 
 /**
- * Show the current show
+ * Show the current star
  */
 exports.read = function (req, res) {
-  res.json(req.show);
+  res.json(req.star);
 };
 
 /**
- * Update a show
+ * Update a star
  */
 exports.update = function (req, res) {
-  var show = req.show;
+  var star = req.star;
 
-  show.title = req.body.title;
-  show.content = req.body.content;
+  star.title = req.body.title;
+  star.content = req.body.content;
 
-  show.save(function (err) {
+  star.save(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(show);
+      res.json(star);
     }
   });
 };
 
 /**
- * Delete an show
+ * Delete an star
  */
 exports.delete = function (req, res) {
-  var show = req.show;
+  var star = req.star;
 
-  show.remove(function (err) {
+  star.remove(function (err) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(show);
+      res.json(star);
     }
   });
 };
 
 /**
- * List of Shows
+ * List of Stars
  */
 exports.list = function (req, res) {
-  Show.find().sort('-created').populate('user', 'displayName').exec(function (err, shows) {
+  Star.find().sort('-created').populate('user', 'displayName').exec(function (err, stars) {
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });
     } else {
-      res.json(shows);
+      res.json(stars);
     }
   });
 };
 
 /**
- * Show middleware
+ * Star middleware
  */
-exports.showByID = function (req, res, next, id) {
+exports.starByID = function (req, res, next, id) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
-      message: 'Show is invalid'
+      message: 'Star is invalid'
     });
   }
 
-  Show.findById(id).populate('user', 'displayName').exec(function (err, show) {
+  Star.findById(id).populate('user', 'displayName').exec(function (err, star) {
     if (err) {
       return next(err);
-    } else if (!show) {
+    } else if (!star) {
       return res.status(404).send({
-        message: 'No show with that identifier has been found'
+        message: 'No star with that identifier has been found'
       });
     }
-    req.show = show;
+    req.star = star;
     next();
   });
 };

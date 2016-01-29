@@ -9,10 +9,13 @@ angular.module('users').factory('Authentication', ['$window',
     };
 
     function replaceAll(str, find, replace) {
-      return str.replace(new RegExp(find, 'g'), replace);
+      if (typeof str === 'string') {
+        return str.replace(new RegExp(find, 'g'), replace);
+      }
     }
-
-    auth.user.profileImageURL = replaceAll(auth.user.profileImageURL, '&#x2F;', '/');
+    if (auth.user.profileImageURL){
+      auth.user.profileImageURL = replaceAll(auth.user.profileImageURL, '&#x2F;', '/');
+    }
 
     return auth;
   }

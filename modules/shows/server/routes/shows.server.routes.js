@@ -7,6 +7,7 @@ var showsPolicy = require('../policies/shows.server.policy'),
   shows = require('../controllers/shows.server.controller');
 
 module.exports = function (app) {
+
   // Shows collection routes
   app.route('/api/shows').all(showsPolicy.isAllowed)
     .get(shows.list)
