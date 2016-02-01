@@ -14,9 +14,12 @@ var path = require('path'),
 exports.create = function (req, res) {
   var program = new Program(req.body);
   program.user = req.user;
+  console.log(req.user);
+  console.log(req);
 
   program.save(function (err) {
     if (err) {
+      console.log(err);
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
       });

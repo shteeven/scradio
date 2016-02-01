@@ -14,7 +14,7 @@ var path = require('path'),
 exports.create = function (req, res) {
   var show = new Show(req.body);
   show.user = req.user;
-  
+
   show.save(function (err) {
     if (err) {
       return res.status(400).send({

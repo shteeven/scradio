@@ -8,7 +8,8 @@ angular.module('programs').config(['$stateProvider',
       .state('programs', {
         abstract: true,
         url: '/programs',
-        template: '<ui-view/>'
+        template: '<ui-view/>',
+        controller: 'ProgramsController'
       })
       .state('programs.list', {
         url: '',
@@ -19,7 +20,8 @@ angular.module('programs').config(['$stateProvider',
         templateUrl: 'modules/programs/client/views/create-program.client.view.html',
         data: {
           roles: ['user', 'admin']
-        }
+        },
+        controller: 'ProgramsCreateController'
       })
       .state('programs.view', {
         url: '/:programId',
@@ -30,7 +32,8 @@ angular.module('programs').config(['$stateProvider',
         templateUrl: 'modules/programs/client/views/edit-program.client.view.html',
         data: {
           roles: ['user', 'admin']
-        }
+        },
+        controller: 'ProgramsEditController'
       });
   }
 ]);

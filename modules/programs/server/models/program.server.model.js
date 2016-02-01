@@ -36,10 +36,10 @@ var ProgramSchema = new Schema({
     en: String,
     kr: String
   },
-  hostID: [
+  starId: [
     {
       type: Schema.ObjectId,
-      ref: 'Host'
+      ref: 'Star'
     }
   ]
 });

@@ -1,5 +1,6 @@
 'use strict';
 
+//TODO: put clear function in service
 //Programs service used for communicating with the programs REST endpoints
 angular.module('programs').factory('Programs', ['$resource',
   function ($resource) {

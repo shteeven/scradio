@@ -1,4 +1,4 @@
-<section ng-controller="ProgramsController" ng-init="find()">
+<section>
   <div class="page-header">
     <h1>Programs</h1>
   </div>
@@ -12,7 +12,7 @@
         <span ng-if="!program.user">Deleted User</span>
       </small>
       <h4 class="list-group-item-heading" ng-bind="program.title"></h4>
-      <p class="list-group-item-text" ng-bind="program.content"></p>
+      <p class="list-group-item-text" ng-bind="program.description.en"></p>
     </a>
   </div>
   <div class="alert alert-warning text-center" ng-if="programs.$resolved && !programs.length">

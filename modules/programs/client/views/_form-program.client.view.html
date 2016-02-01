@@ -1,0 +1,50 @@
+<fieldset>
+
+  <div class="form-group" show-errors>
+    <label for="title">Title</label>
+    <input name="title" type="text" ng-model="program.title" id="title" class="form-control" placeholder="Social" required>
+    <div ng-messages="programForm.title.$error" role="alert">
+      <p class="help-block error-text" ng-message="required">Program title is required.</p>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="descriptionEn">Description: English</label>
+    <textarea name="description" ng-model="program.description.en" id="descriptionEn" class="form-control"
+              cols="15" rows="4" placeholder="Description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="descriptionKr">Description: 한글</label>
+    <textarea name="description" ng-model="program.description.kr" id="descriptionKr" class="form-control"
+              cols="15" rows="4" placeholder="Description"></textarea>
+  </div>
+
+  <div class="form-group form-inline" show-errors>
+    <div class="input-group">
+      <label for="facebook">Facebook</label>
+      <input name="facebook" type="text" ng-model="program.social.facebook" id="facebook" class="form-control" placeholder="Facebook Address" required>
+    </div>
+    <div class="input-group">
+      <label for="twitter">Twitter</label>
+      <input name="twitter" type="text" ng-model="program.social.twitter" id="twitter" class="form-control" placeholder="Twitter Address" required>
+    </div>
+    <div class="input-group">
+      <label for="mixcloud">Mixcloud</label>
+      <input name="mixcloud" type="text" ng-model="program.social.mixcloud" id="mixcloud" class="form-control" placeholder="Mixcloud Address" required>
+    </div>
+    <div class="input-group">
+      <label for="homepage">Homepage</label>
+      <input name="homepage" type="text" ng-model="program.social.homepage" id="homepage" class="form-control" placeholder="Homepage Address" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <input type="submit" value="Submit" class="btn btn-success">
+    <input type="button" value="Cancel" ng-click="clearFields()" class="btn btn-warning">
+  </div>
+
+  <div ng-show="error" class="text-danger">
+    <strong ng-bind="error"></strong>
+  </div>
+
+</fieldset>
