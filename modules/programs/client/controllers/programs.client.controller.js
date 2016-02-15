@@ -50,7 +50,7 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$statePa
         homepage: ''
       };
       $scope.program.categories = '';
-      $scope.program.description =  {
+      $scope.program.description = {
         en: '',
         kr: ''
       };
