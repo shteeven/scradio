@@ -4,6 +4,7 @@
 angular.module('programs').controller('ProgramsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Programs',
   function ($scope, $stateParams, $location, Authentication, Programs) {
     $scope.authentication = Authentication;
+    $scope.program = {};
 
     // Remove existing Program
     function remove(program) {
@@ -37,39 +38,24 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$statePa
       });
     }
 
-    function clearFields(program) {
-      program.title = '';
-      program.content = '';
-      program.profileImageURL = '';
-      program.images = '';
-      program.social = {
+    function clearFields() {
+      $scope.program.title = '';
+      $scope.program.content = '';
+      $scope.program.profileImageURL = '';
+      $scope.program.images = '';
+      $scope.program.social = {
         mixcloud: '',
         twitter: '',
         facebook: '',
         homepage: ''
       };
-      program.categories = '';
-      program.description =  {
+      $scope.program.categories = '';
+      $scope.program.description =  {
         en: '',
         kr: ''
       };
-      program.starId = [];
+      $scope.program.starId = [];
     }
-
-    $scope.findOne = findOne;
-    $scope.find = find;
-    $scope.remove = remove;
-    $scope.clearFields = clearFields;
-
-  }
-]);
-
-
-angular.module('programs').controller('ProgramsCreateController', ['$scope', '$location', 'Authentication', 'Programs', 'FileUploader',
-  function ($scope, $location, Authentication, Programs, FileUploader) {
-    $scope.authentication = Authentication;
-    $scope.clearFields = $scope.$parent.clearFields;
-    $scope.program = {};
 
     // Create new Program
     function create(isValid) {
@@ -93,34 +79,16 @@ angular.module('programs').controller('ProgramsCreateController', ['$scope', '$l
         },
         starId: $scope.program.starId
       });
-      console.log(program);
 
       // Redirect after save
       program.$save(function (response) {
         // Clear form fields
-        // SCOPE SHOULD BE DESTROYED ON REDIRECT
-        //$scope.clearFields($scope.);
-
+        clearFields();
         $location.path('programs/' + response._id);
       }, function (errorResponse) {
         $scope.error = errorResponse.data.message;
       });
     }
-
-    $scope.create = create;
-
-    // initialize controller vars
-    $scope.clearFields($scope.program);
-
-  }
-]);
-
-angular.module('programs').controller('ProgramsEditController', ['$scope', '$stateParams', '$location', 'Authentication', 'Programs', 'FileUploader',
-  function ($scope, $stateParams, $location, Authentication, Programs, FileUploader) {
-    $scope.authentication = Authentication;
-    $scope.findOne = $scope.$parent.findOne;
-    $scope.clearFields = $scope.$parent.clearFields;
-    $scope.program = {};
 
     // Update existing Program
     function update(isValid) {
@@ -145,11 +113,15 @@ angular.module('programs').controller('ProgramsEditController', ['$scope', '$sta
       });
     }
 
+
+    $scope.remove = remove;
+    $scope.find = find;
+    $scope.findOne = findOne;
+    $scope.clearFields = clearFields;
+    $scope.create = create;
     $scope.update = update;
 
-    // init data
-    $scope.clearFields($scope.program); //TODO: repeat????
-    $scope.findOne();
-
+    //init vars
+    clearFields();
   }
 ]);

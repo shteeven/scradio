@@ -4,6 +4,7 @@
   </div>
   <div class="list-group">
     <a ng-repeat="program in programs" ui-sref="programs.view({programId: program._id})" class="list-group-item">
+      {{programs}}
       <small class="list-group-item-text">
         Posted on
         <span ng-bind="program.created | date:'mediumDate'"></span>
