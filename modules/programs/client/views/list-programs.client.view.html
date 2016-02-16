@@ -1,12 +1,12 @@
 <section>
-  <div class="page-header">
+  <div class="page-header" ng-init="find()">
     <h1>Programs</h1>
   </div>
   <div class="list-group">
     <a ng-repeat="program in programs" ui-sref="programs.view({programId: program._id})" class="list-group-item">
-      {{programs}}
+      {{program}}
       <small class="list-group-item-text">
-        Posted on
+        Created on
         <span ng-bind="program.created | date:'mediumDate'"></span>
         by
         <span ng-if="program.user" ng-bind="program.user.displayName"></span>

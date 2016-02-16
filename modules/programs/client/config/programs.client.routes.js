@@ -20,8 +20,7 @@ angular.module('programs').config(['$stateProvider',
         templateUrl: 'modules/programs/client/views/create-program.client.view.html',
         data: {
           roles: ['user', 'admin']
-        },
-        controller: 'ProgramsCreateController'
+        }
       })
       .state('programs.view', {
         url: '/:programId',
@@ -32,8 +31,7 @@ angular.module('programs').config(['$stateProvider',
         templateUrl: 'modules/programs/client/views/edit-program.client.view.html',
         data: {
           roles: ['user', 'admin']
-        },
-        controller: 'ProgramsEditController'
+        }
       });
   }
 ]);

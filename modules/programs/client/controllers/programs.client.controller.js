@@ -60,6 +60,8 @@ angular.module('programs').controller('ProgramsController', ['$scope', '$statePa
     // Create new Program
     function create(isValid) {
       $scope.error = null;
+      //TODO: this is only true for testing purposes
+      isValid = true;
 
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'programForm');

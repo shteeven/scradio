@@ -7,15 +7,11 @@ var path = require('path'),
   mongoose = require('mongoose'),
   Program = mongoose.model('Program'),
   errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
-
 /**
  * Create a program
  */
 exports.create = function (req, res) {
   var program = new Program(req.body);
-  program.user = req.user;
-  console.log(req.user);
-  console.log(req);
 
   program.save(function (err) {
     if (err) {

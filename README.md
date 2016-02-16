@@ -1,3 +1,19 @@
+Temporary README; has personal notes of how to establish this app.
+# SCRadio
+
+## Server Set Up 
+
+Server set up follows the steps found [here][1]; and [this][2] was an aid for setting up the reverse proxy, Nginx, and preparing MEAN for production.
+
+IMPORTANT!!! Security considerations for deploying the app in production. [here][3]
+
+Use AWS guide to make policies for buckets, here. [4]
+
+## 
+
+
+# MEANJS Default ReadMe
+
 [![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/meanjs/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -322,3 +338,14 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+[1] https://www.codefellows.org/blog/how-to-host-a-nodejs-app-on-an-ec2-ubuntu-server
+[2] https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-14-04
+[3] https://devcenter.heroku.com/articles/s3-upload-node#prerequisites
+[4] https://console.aws.amazon.com/s3/
+
+
+
+
+
